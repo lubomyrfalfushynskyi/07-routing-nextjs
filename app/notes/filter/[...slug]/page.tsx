@@ -25,7 +25,7 @@ export default async function FilterPage({ params }: { params: Promise<{ slug: s
   const notes = await fetchNotes({ tag: tag === 'all' ? undefined : tag });
 
   return (
-    <div>
+    <div style={{ flex: 1 }}>
       <h1>Notes {tag !== 'all' ? `- ${tag}` : ''}</h1>
       <NoteList notes={notes} />
     </div>
