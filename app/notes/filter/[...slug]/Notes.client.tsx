@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchNotes } from '@/lib/api/notes';
+import { AllowedTag } from '@/types/note';
 import NoteList from '@/components/NoteList/NoteList';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Pagination from '@/components/Pagination/Pagination';
@@ -11,7 +12,7 @@ import NoteForm from '@/components/NoteForm/NoteForm';
 import { useDebounce } from '@/lib/hooks/useDebounce';
 
 interface NotesClientProps {
-  tag?: string;
+  tag?: AllowedTag | 'all';
 }
 
 export default function NotesClient({ tag }: NotesClientProps) {
