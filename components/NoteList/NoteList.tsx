@@ -20,23 +20,22 @@ export default function NoteList({ notes }: NoteListProps) {
   });
 
   return (
-    <ul className={css.list}>
+    <ul className={css.noteList}>
       {notes.map((note) => (
-        <li key={note.id} className={css.listItem}>
-          <h2 className={css.title}>{note.title}</h2>
-          <p className={css.content}>{note.content}</p>
-          <div className={css.footer}>
+        <li key={note.id} className={css.noteItem}>
+          <h3>{note.title}</h3>
+          <p>{note.content}</p>
+          <footer>
             <span className={css.tag}>{note.tag}</span>
-            <Link href={`/notes/${note.id}`} className={css.link}>
+            <Link href={`/notes/${note.id}`}>
               View details
             </Link>
             <button
-              className={css.button}
               onClick={() => mutation.mutate(note.id)}
             >
               Delete
             </button>
-          </div>
+          </footer>
         </li>
       ))}
     </ul>

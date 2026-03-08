@@ -1,71 +1,80 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.formContainer {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .formGroup {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-  font-weight: 500;
-  color: #212529;
+  margin-bottom: 15px;
 }
 
-.input,
-.textarea,
-.select {
-  margin-top: 4px;
-  padding: 8px 12px;
-  font-size: 14px;
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #343a40;
+}
+
+.formGroup input[type='text'],
+.formGroup textarea {
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ced4da;
   border-radius: 4px;
-  resize: none;
+  font-size: 16px;
+  box-sizing: border-box; /* Ensures padding doesn't affect overall width */
 }
 
-.actions {
+.formGroup textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 80px;
+}
+
+.formGroup select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.formActions {
   display: flex;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.submitButton {
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #0d6efd;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
+.submitBtn,
+.cancelBtn {
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
   transition: background-color 0.2s ease;
 }
 
-.submitButton:hover {
-  background-color: #0b5ed7;
+.submitBtn {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
 }
 
-.submitButton:disabled {
+.submitBtn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.cancelBtn {
   background-color: #6c757d;
-  cursor: not-allowed;
+  color: white;
+  border: 1px solid #6c757d;
 }
 
-.cancelButton {
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #f8f9fa;
-  color: #212529;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.cancelButton:hover {
-  background-color: #e2e6ea;
-}
-
-.error {
-  color: #dc3545;
-  font-size: 12px;
-  margin-top: 4px;
+.cancelBtn:hover {
+  background-color: #5a6268;
+  border-color: #5a6268;
 }
