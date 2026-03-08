@@ -21,7 +21,7 @@ api.interceptors.request.use(config => {
 });
 
 
-export const fetchNotes = async (params?: { search?: string; tag?: string }): Promise<Note[]> => {
+export const fetchNotes = async (params?: { search?: string; tag?: AllowedTag; page?: number }): Promise<Note[]> => {
   const { data } = await api.get<Note[]>(`/notes`, { params });
   return data;
 };
