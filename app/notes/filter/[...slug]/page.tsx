@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function FilterPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
-  const tag = slug?.[0] || 'all';
+  const tag = slug?.[0] ? decodeURIComponent(slug[0]) : 'all';
   
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
