@@ -8,7 +8,8 @@ export default function SidebarNotes() {
     <aside style={{ backgroundColor: '#333', padding: '1rem', borderRadius: '8px' }}>
       <ul className={css.menuList}>
         {tags.map((tag) => {
-                        const href = `/notes/filter/${encodeURIComponent(tag)}`;          return (
+          const href = tag === 'All notes' ? '/notes/filter/all' : `/notes/filter/${tag}`;
+          return (
             <li key={tag} className={css.menuItem}>
               <Link href={href} className={css.menuLink}>
                 {tag}

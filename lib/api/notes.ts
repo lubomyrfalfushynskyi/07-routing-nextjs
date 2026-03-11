@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Note, CreateNoteDto, UpdateNoteDto, AllowedTag, NotesResponse } from '@/types/note';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api';
-const API_TOKEN = process.env.NEXT_PUBLIC_API_TOKEN;
+const API_TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -21,8 +21,8 @@ api.interceptors.request.use(config => {
 });
 
 
-export const fetchNotes = async (params?: { search?: string; tag?: AllowedTag; page?: number }): Promise<Note[]> => {
-  const { data } = await api.get<Note[]>(`/notes`, { params });
+export const fetchNotes = async (params?: { search?: string; tag?: AllowedTag; page?: number }): Promise<NotesResponse> => {
+  const { data } = await api.get<NotesResponse>(`/notes`, { params });
   return data;
 };
 

@@ -19,7 +19,7 @@ export interface UpdateNoteDto {
     tag?: string;
 }
 
-export type AllowedTag = 'All notes' | 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
+export type AllowedTag = 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
 
 export interface NotesResponse {
     notes: Note[];

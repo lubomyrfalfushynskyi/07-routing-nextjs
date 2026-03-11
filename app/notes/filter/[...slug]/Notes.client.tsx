@@ -21,17 +21,23 @@ export default function NotesClient({ tag }: NotesClientProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const debouncedSearch = useDebounce(search, 300);
 
-  const { data: notes = [], isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['notes', tag, debouncedSearch, page],
-    queryFn: () => fetchNotes({ tag: tag === 'All notes' ? undefined : tag, search: debouncedSearch, page }),
+    queryFn: () => fetchNotes({ 
+      tag: tag === 'all' ? undefined : tag as AllowedTag, 
+      search: debouncedSearch, 
+      page 
+    }),
   });
   
-  // Temporarily hardcode totalPages as we're not getting it from the API now
-  const totalPages = 1;   if (isLoading) return <div>Loading...</div>;
+  const notes = data?.notes ?? [];
+  const totalPages = data?.totalPages ?? 1;
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div style={{ flex: 1 }}>
-      <h1>Notes {tag && tag !== 'All notes' ? `- ${tag}` : ''}</h1>
+      <h1>Notes {tag && tag !== 'all' ? `- ${tag}` : ''}</h1>
                 <SearchBox
                   value={search}
                   onChange={(value) => {

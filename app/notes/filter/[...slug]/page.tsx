@@ -26,13 +26,13 @@ export default async function FilterPage({ params }: { params: Promise<{ slug: s
   
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
-    queryKey: ['notes', tag],
-    queryFn: () => fetchNotes({ tag: tag === 'all' ? undefined : tag }),
+    queryKey: ['notes', tag, '', 1],
+    queryFn: () => fetchNotes({ tag: tag === 'all' ? undefined : tag as AllowedTag, search: '', page: 1 }),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesClient tag={tag} />
+      <NotesClient tag={tag as AllowedTag | 'all'} />
     </HydrationBoundary>
   );
 }
